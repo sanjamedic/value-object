@@ -26,6 +26,10 @@ class Birthday
         if ($year > $currentYear || ($year + 130 < $currentYear)) {
             throw new InvalidBirthdayException($year);
         }
+        $year = (int) $year;
+        $month = (int) $month;
+        $day = (int) $day;
+
         if (checkdate($month, $day, $year) === false) {
             $month = 1;
             $day = 1;
@@ -40,7 +44,7 @@ class Birthday
      */
     public function getBirthday()
     {
-        return (new \DateTime())->setDate($this->year, $this->month, $this->day)->setTime(0,0);
+        return (new \DateTime())->setDate($this->year, $this->month, $this->day)->setTime(0, 0);
     }
 
     /**
